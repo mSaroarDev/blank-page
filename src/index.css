@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+@plugin "daisyui";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --brand: #5465ff;
+  --font-en: 'Montserrat', sans-serif;
+  --transition-speed: 0.3s;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand: var(--brand);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+:root.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+*, *::before, *::after {
+  transition: background-color var(--transition-speed) ease,
+    border-color var(--transition-speed) ease,
+    color var(--transition-speed) ease,
+    fill var(--transition-speed) ease,
+    stroke var(--transition-speed) ease,
+    opacity var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease;
+}
+
+
+
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-en);
+  }
+
+  main {
+    @apply w-full max-w-7xl mx-auto
+  }
+}
+
+@layer components {
+  .bg-controlled {
+    @apply bg-white dark:bg-gray-800
+  }
+}
