@@ -1,3 +1,4 @@
+import UserIcon from "../assets/icons/UserIcon";
 import { ToggleTheme } from "./ToogleTheme";
 
 const Navbar = () => {
@@ -18,19 +19,15 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <div className="navbar-center">
-            <a className="btn btn-ghost text-xl">Blank Page Canvas</a>
-          </div>
+          <div className="navbar-center text-base font-semibold">Blank Note</div>
         </div>
 
-        <div className="navbar-end">
+        <div className="navbar-end flex items-center gap-2.5">
           <ToggleTheme />
           <div className="dropdown dropdown-end">
-            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar ml-3">
+            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                <UserIcon />
               </div>
             </div>
             <ul

@@ -115,6 +115,10 @@ export const HomeEditor: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    saveContent();
+  }, [text]);
+
   return (
     <div className="min-h-screen p-4">
       <div className="">
@@ -123,7 +127,7 @@ export const HomeEditor: React.FC = () => {
         <div className="p-4 max-w-4xl mx-auto overflow-hidden">
           <div className='flex items-center justify-end'>
             <div className="space-x-2">
-              <button
+              {/* <button
                 onClick={copyContent}
                 className="p-1 transition cursor-pointer"
               >
@@ -134,10 +138,10 @@ export const HomeEditor: React.FC = () => {
                 className="p-1 transition cursor-pointer"
               >
                 {isSaved ? <Checked /> : <SaveIcon />}
-              </button>
+              </button> */}
               <button
                 onClick={clearContent}
-                className="p-1 transition cursor-pointer text-red-500 hover:text-red-700"
+                className={`py-1 px-2 border border-gray-200 dark:border-gray-800 transition cursor-pointer ${theme === 'light' ? 'hover:bg-gray-300' : 'hover:bg-gray-700'} rounded-md flex items-center space-x-2`}
                 title="Clear all text"
               >
                 {theme === 'light' ? (
@@ -145,6 +149,8 @@ export const HomeEditor: React.FC = () => {
                 ) : (
                   <img src={ClearWhite} alt="Clear" className='w-5 h-5' />
                 )}
+
+                <span className=''>Clear</span>
               </button>
             </div>
           </div>
