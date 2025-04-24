@@ -20,11 +20,11 @@ export const HomeEditor: React.FC = () => {
     }
   }, []);
 
-  // const saveContent = () => {
-  //   localStorage.setItem(STORAGE_KEY, text);
-  //   setIsSaved(true);
-  //   setTimeout(() => setIsSaved(false), 2000);
-  // };
+  const saveContent = () => {
+    localStorage.setItem(STORAGE_KEY, text);
+    // setIsSaved(true);
+    // setTimeout(() => setIsSaved(false), 2000);
+  };
 
   // const copyContent = () => {
   //   navigator.clipboard.writeText(text)
