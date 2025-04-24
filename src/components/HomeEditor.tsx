@@ -1,7 +1,4 @@
 import React, { useState, useEffect, useRef, KeyboardEvent } from 'react';
-import CopyIcon from '../assets/icons/CopyIcon';
-import SaveIcon from '../assets/icons/SaveIcon';
-import Checked from '../assets/icons/Checked';
 import Clear from '../assets/icons/clean.png';
 import ClearWhite from '../assets/icons/clean-white.png';
 import Navbar from './Navbar';
@@ -9,8 +6,8 @@ import { useTheme } from '../providers/ThemeProviders';
 
 export const HomeEditor: React.FC = () => {
   const [text, setText] = useState<string>('');
-  const [isSaved, setIsSaved] = useState<boolean>(false);
-  const [isCopied, setIsCopied] = useState<boolean>(false);
+  // const [isSaved, setIsSaved] = useState<boolean>(false);
+  // const [isCopied, setIsCopied] = useState<boolean>(false);
   const editorRef = useRef<HTMLTextAreaElement>(null);
   const STORAGE_KEY = 'text-editor-content';
 
@@ -23,41 +20,41 @@ export const HomeEditor: React.FC = () => {
     }
   }, []);
 
-  const saveContent = () => {
-    localStorage.setItem(STORAGE_KEY, text);
-    setIsSaved(true);
-    setTimeout(() => setIsSaved(false), 2000);
-  };
+  // const saveContent = () => {
+  //   localStorage.setItem(STORAGE_KEY, text);
+  //   setIsSaved(true);
+  //   setTimeout(() => setIsSaved(false), 2000);
+  // };
 
-  const copyContent = () => {
-    navigator.clipboard.writeText(text)
-      .then(() => {
-        setIsCopied(true);
-        setTimeout(() => setIsCopied(false), 2000);
-      })
-      .catch((err) => {
-        console.error('Failed to copy: ', err);
+  // const copyContent = () => {
+  //   navigator.clipboard.writeText(text)
+  //     .then(() => {
+  //       setIsCopied(true);
+  //       setTimeout(() => setIsCopied(false), 2000);
+  //     })
+  //     .catch((err) => {
+  //       console.error('Failed to copy: ', err);
         
-        try {
-          const textArea = document.createElement('textarea');
-          textArea.value = text;
-          textArea.style.position = 'fixed';
-          document.body.appendChild(textArea);
-          textArea.focus();
-          textArea.select();
+  //       try {
+  //         const textArea = document.createElement('textarea');
+  //         textArea.value = text;
+  //         textArea.style.position = 'fixed';
+  //         document.body.appendChild(textArea);
+  //         textArea.focus();
+  //         textArea.select();
           
-          const successful = document.execCommand('copy');
-          if (successful) {
-            setIsCopied(true);
-            setTimeout(() => setIsCopied(false), 2000);
-          }
+  //         const successful = document.execCommand('copy');
+  //         if (successful) {
+  //           setIsCopied(true);
+  //           setTimeout(() => setIsCopied(false), 2000);
+  //         }
           
-          document.body.removeChild(textArea);
-        } catch (fallbackErr) {
-          console.error('Fallback copy failed:', fallbackErr);
-        }
-      });
-  };
+  //         document.body.removeChild(textArea);
+  //       } catch (fallbackErr) {
+  //         console.error('Fallback copy failed:', fallbackErr);
+  //       }
+  //     });
+  // };
 
   const clearContent = () => {
     setText('');
